@@ -1,0 +1,37 @@
+layout:
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rectangle Checker</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  </head>
+  <body>
+    <div class="container">
+    <!--
+    '<%=' is ruby tag to run code and display content on webpage;
+    '<%' runs ruby code but doesn't display
+    -->
+    <!-- 'yield' is ruby keyword to display contents by way of app.rb -->
+      <%= yield %>
+    </div>
+  </body>
+</html>
+
+
+app.rb:
+require('sinatra')
+
+# 'get' is a sinatra method
+# '/rectangle' is webpage location, example:'www.blahblah.com/rectangle'
+get('/rectangle') do
+  # '@description' is an instance variable; can be used outside of scope, example: available to 'views' folder after 'get' code block is closed
+  # instance variable '@description' is used if displaying to viewer; local variable 'description' is used when content is not displayed to viewer
+  @description = "This application will determine whether a rectangle is a square or not."
+  # 'input' is ruby file 'input.erb' from 'views' folder
+  # ':' is a ruby symbol
+  erb(:input)
+end
+
+input.erb:
+
+<!-- "@description" taken from app.rb
